@@ -1,0 +1,29 @@
+public class StaticResource{
+    public static void createRes(String Name,String contentType, String blobStr)
+    {
+        MetadataService.MetadataPort service = createService();
+        MetadataService.StaticResource staticResource = new MetadataService.StaticResource();
+        staticResource.fullName = Name;
+        staticResource.contentType = contentType;
+        staticResource.cacheControl = 'public';
+        staticResource.content = blobStr;
+        MetadataService.SaveResult[] results = service.createMetadata(new List<MetadataService.Metadata> { staticResource });        
+    }
+    public static void updateRes(String Name,String contentType, String blobStr)
+    {
+        MetadataService.MetadataPort service = createService();     
+        MetadataService.StaticResource staticResource = new MetadataService.StaticResource();
+        staticResource.fullName = Name;
+        staticResource.contentType = contentType;
+        staticResource.cacheControl = 'public';
+        staticResource.content = blobStr;
+        MetadataService.SaveResult[] results = service.updateMetadata(new List<MetadataService.Metadata> {staticResource});  
+    }
+    
+    private static MetadataService.MetadataPort createService(){ 
+        MetadataService.MetadataPort service = new MetadataService.MetadataPort();
+        service.SessionHeader = new MetadataService.SessionHeader_element();       
+        service.SessionHeader.sessionId = UserInfo.getSessionId();  // OR access_token
+        return service;     
+    }
+}
