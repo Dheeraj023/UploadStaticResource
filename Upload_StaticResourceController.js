@@ -40,6 +40,7 @@
         }
         
     },
+    
     doInit : function(component, event, helper) {
         let action = component.get("c.getVfURL");
         action.setCallback(this, function(response){
@@ -50,12 +51,7 @@
         });
         $A.enqueueAction(action);
     },
-    
-    rerender : function(component, helper) {
-        this.superRerender();
-        // Write your custom code here. 
-    },
-        
+       
     handleExit : function(component, event, helper) {
         $A.get("e.force:closeQuickAction").fire();
     }
