@@ -20,7 +20,8 @@ public class StaticResource{
         MetadataService.SaveResult[] results = service.updateMetadata(new List<MetadataService.Metadata> {staticResource});  
     }
     
-    private static MetadataService.MetadataPort createService(){ 
+    private static MetadataService.MetadataPort createService()
+    { 
         MetadataService.MetadataPort service = new MetadataService.MetadataPort();
         service.SessionHeader = new MetadataService.SessionHeader_element();       
         service.SessionHeader.sessionId = UserInfo.getSessionId();  // OR access_token
