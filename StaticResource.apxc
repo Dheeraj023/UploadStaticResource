@@ -1,6 +1,7 @@
 public class StaticResource{
     public static void createRes(String Name,String contentType, String blobStr)
     {
+        System.debug('Hello Class ');
         MetadataService.MetadataPort service = createService();
         MetadataService.StaticResource staticResource = new MetadataService.StaticResource();
         staticResource.fullName = Name;
